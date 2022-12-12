@@ -1,4 +1,4 @@
-<x-layout>
+<x-app-layout>
 <div class="container mx-auto mt-10 bg-slate-700  rounded-xl">
   <div class="md:grid md:grid-cols-3 md:gap-6">
     <div class="md:col-span-1">
@@ -32,7 +32,7 @@
             <div class="w-1/3">
                 <label for="description" class="block text-sm font-medium text-gray-700">Description :</label>
                 <div class="mt-1">
-                  <textarea  name="description" id="description" name="about" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="you@example.com"></textarea>
+                  <textarea  name="description" id="description" name="about" rows="3" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm" placeholder="Deskripsi produk"></textarea>
                 </div>
                 <p class="mt-2 text-sm text-gray-500">Brief description for your profile. URLs are hyperlinked.</p>
               </div>
@@ -48,12 +48,6 @@
 
                     <img src="{{ asset('images/'.Session::get('image')) }}" />
                     @endif
-                    @php
-                        $file = $request->file('Picture');
-                        $destinationPath = 'public/img/';
-                        $originalFile = $file->getClientOriginalName();
-                        $file->move($destinationPath, $originalFile);
-                    @endphp
                     <div class="space-y-1 text-center">
                         <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
                         <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />

@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ProductController;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
@@ -16,14 +18,15 @@ use Inertia\Inertia;
 |
 */
 
-Route::get('/', function () {
-    return Inertia::render('Welcome', [
+/*Route::get('/', function () {
+    return Inertia::render('index', [
         'canLogin' => Route::has('login'),
         'canRegister' => Route::has('register'),
         'laravelVersion' => Application::VERSION,
         'phpVersion' => PHP_VERSION,
     ]);
-});
+});*/
+Route::get('/', function () { return view('index');});
 Route::get('/images/{name}', 'FileController@show');
 Route::get('/dashboard', function () {
     return Inertia::render('Dashboard');
@@ -35,7 +38,7 @@ Route::middleware('auth')->group(function () {
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
 
-Route::prefix("blog")->name("blogs.")->controller(ProductController::class)->group(function(){
+Route::prefix("blog")->name("blogs.")->controller(PostController::class)->group(function(){
     Route::get("/list", "index")->name("list");
     Route::get("/detail/{id}", "detail")->name("detail");
     Route::get("/store", "store")->name("store");
