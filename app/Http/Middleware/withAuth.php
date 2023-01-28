@@ -19,7 +19,7 @@ class withAuth
         if(!session()->isStarted()) session()->start();
         if(!session()->get("logged", false)) {
             return redirect()
-            ->route("login")
+            ->route("auth.login")
             ->withErrors([
                 "msg" => "Mohon login terlebih dahulu"
             ]);

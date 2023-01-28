@@ -2,7 +2,7 @@
     <!-- Session Status -->
     <x-auth-session-status class="mb-4" :status="session('status')" />
 
-    <form method="POST" action="{{ route('login') }}">
+    <form method="POST" action="{{ route("auth.userLogin") }}">
         @csrf
 
         <!-- Email Address -->
@@ -43,5 +43,15 @@
                 {{ __('Log in') }}
             </x-primary-button>
         </div>
+
+        @if (Route::has('auth.register'))
+        <p class="w-full my-6 text-xs text-center text-gray-700 sm:text-sm sm:my-8">
+            {{ __("Don't have an account?") }}
+            <a class="text-blue-500 no-underline hover:text-blue-700 hover:underline" href="{{ route("auth.register") }}">
+                {{ __('Register') }}
+            </a>
+        </p>
+        @endif
+
     </form>
 </x-guest-layout>

@@ -17,12 +17,13 @@ class ProductsController extends Controller
      */
     public function index()
     {
-        return view ('product.index')
-        ->with('product', Product::latest()->get());//show all member of Product and orderBy('created_at', 'DESC')
+        $products = Product::all();
+        return view ('products.index')
+        ->with('products', $products);//show all member of Product and orderBy('created_at', 'DESC')
     }
 
     public function create() {
-        return view("product.create");
+        return view("products.create");
     }
 
     public function store(ProductStoreRequest $request) {
@@ -56,7 +57,7 @@ class ProductsController extends Controller
      */
     public function edit(Product $product)
     {
-        return view('product.edit', $product);
+        return view('products.edit', $product);
     }
 
     /**

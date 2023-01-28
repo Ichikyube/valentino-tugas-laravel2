@@ -41,12 +41,8 @@ class PostsController extends Controller
             $validated['has_image'] = true;
 
         } else $imageName = "default.jpg";
-
-        $content = Article::create([
-            'post-trixFields' => request('post-trixFields'),
-            'attachment-post-trixFields' => request('attachment-post-trixFields')
-        ]);
-        $validated['article_id'] = $content->id;
+        $validated['post-trixFields'] =  request('post-trixFields');
+        $validated['attachment-post-trixFields'] = request('attachment-post-trixFields');
         Post::create($validated);
 
         return redirect('/blogs')
@@ -127,8 +123,6 @@ class PostsController extends Controller
     public function destroy($id) {
         $post = Post::query()
         ->where("id", $id);
-        $article = Article::query()->where('id', $post->article_id);
-        $article->delete();
         $post->delete();
         return back();
     }

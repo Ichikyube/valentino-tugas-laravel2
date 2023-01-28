@@ -1,9 +1,10 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostsController;
 use App\Http\Controllers\FilesController;
-use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ProductsController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,11 +17,20 @@ use App\Http\Controllers\ProductController;
 */
 
 Route::view('/', 'welcome')->name('welcome');
-Route::get('/dashboard', [PostsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::name('auth.')->group(function(){
+    Route::get('/login',[AuthController::class, 'login'])->name('login');
+    Route::get('/register',[AuthController::class, 'register'])->name('register');
+    Route::post('/login',[AuthController::class, 'login'])->name('userLogin');
+    Route::post('/register',[AuthController::class, 'register'])->name('storeUser');
+    Route::post('/logout',[AuthController::class, 'logout'])->middleware('auth')->name('logout');
+});
+Route::get('/dashboard', [AuthController::class, 'dash'])->middleware('auth')->name('dashboard');
+
+//Route::get('/dashboard', [PostsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::prefix("brands")
     ->name("products.")
-    ->controller(ProductController::class)
+    ->controller(ProductsController::class)
     ->group(function(){
         Route::get("/", "index")->name("list");
         Route::get("/{id}", "show")->name("show");
@@ -53,5 +63,3 @@ Route::prefix("files")
         Route::put("/edit/{id}", "update")->name("update");
         Route::delete("/destroy/{id}", "destroy")->name("destroy");
 });
-
-require __DIR__.'/auth.php';

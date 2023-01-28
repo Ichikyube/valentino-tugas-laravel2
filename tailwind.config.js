@@ -9,6 +9,8 @@ module.exports = {
     theme: {
         extend: {
             fontFamily: {
+                redHatMono: ['Red Hat Mono', 'monospace'],
+                poppins: ['Poppins', 'sans-serif'],
                 sans: ['Inter var', ...defaultTheme.fontFamily.sans],
             },
         },

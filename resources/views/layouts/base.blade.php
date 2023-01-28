@@ -23,7 +23,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
     </head>
 
-    <body class="antialiased bg-yellow-50">
+    <body class="antialiased font-redHatMono bg-yellow-50">
         @include('partials.navbar')
         <div class="container mx-auto h-full">
                 @yield('body')

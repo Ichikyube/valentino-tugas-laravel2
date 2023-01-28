@@ -12,7 +12,7 @@ class Post extends Model
     use HasFactory, Sluggable, HasTrixRichText;
 
     protected $guarded = ['id'];
-    //protected $fillable = ['title','slug','description', 'media_file', 'user_id'];
+    protected $fillable = ['title','slug','description', 'media_file', 'user_id'];
 
     public function user() {
         return $this->belongsTo(User::class);

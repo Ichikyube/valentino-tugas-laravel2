@@ -66,10 +66,10 @@
                                 {{ __('Profile') }}
                             </x-dropdown-link> --}}
                             <!-- Authentication -->
-                            <form method="POST" action="{{ route('logout') }}">
+                            <form method="POST" action="{{ route('auth.logout') }}">
                                 @csrf
 
-                                <x-dropdown-link :href="route('logout')"
+                                <x-dropdown-link :href="route('auth.logout')"
                                         onclick="event.preventDefault();
                                                     this.closest('form').submit();">
                                     {{ __('Log Out') }}
@@ -79,23 +79,23 @@
                     </x-dropdown>
                     @else
                         <div class="w-full space-y-2 border-yellow-200 lg:space-y-0 md:w-max lg:border-l">
-                            @if (Route::has('login'))
+                            @if (Route::has('auth.login'))
                             <div class="space-x-4">
                                 @auth
                                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                                         {{ __('Dashboard') }}
                                     </x-nav-link>
-                                    <form id="logout-form" action="{{ route('logout') }}" method="POST">
+                                    <form id="logout-form" action="{{ route('auth.logout') }}" method="POST">
                                         @csrf
-                                        <a href="{{ route('logout') }}"
+                                        <a href="{{ route('auth.logout') }}"
                                             onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
                                             <button type="submit"
                                                 class="w-full px-6 py-3 text-center transition duration-150 ease-in-out rounded-full active:bg-yellow-200 focus:bg-yellow-100 sm:w-max">Logout</button>
                                         </a>
                                     </form>
                                 @else
-                                @if (Route::has('register'))
-                                    <a href="{{ route('register') }}">
+                                @if (Route::has('auth.register'))
+                                    <a href="{{ route("auth.register") }}">
                                         <button type="button" title="Start buying"
                                             class="w-full px-6 py-3 text-center transition duration-150 ease-in-out rounded-full active:bg-yellow-200 focus:bg-yellow-100 sm:w-max">
                                             <span class="block text-sm font-semibold text-yellow-800">
@@ -104,7 +104,7 @@
                                         </button>
                                     </a>
                                 @endif
-                                    <a href="{{ route('login') }}">
+                                    <a href="{{ route("auth.login") }}">
                                         <button type="button" title="Start buying"
                                             class="w-full px-6 py-3 text-center transition bg-yellow-300 rounded-full hover:bg-yellow-100 active:bg-yellow-400 focus:bg-yellow-300 sm:w-max">
                                             <span class="block text-sm font-semibold text-yellow-900">
@@ -153,10 +153,10 @@
 
                 <div class="mt-3 space-y-1">
                     <!-- Authentication -->
-                    <form method="POST" action="{{ route('logout') }}">
+                    <form method="POST" action="{{ route('auth.logout') }}">
                         @csrf
 
-                        <x-responsive-nav-link :href="route('logout')"
+                        <x-responsive-nav-link :href="route('auth.logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
                             {{ __('Log Out') }}

@@ -6,9 +6,9 @@
                     <h1 class="text-4xl font-bold text-yellow-900 md:text-5xl lg:w-10/12">Your favorite dishes, right at your door</h1>
                     <form action="" class="w-full mt-12">
                         <div class="relative flex p-1 bg-white border border-yellow-200 rounded-full shadow-md md:p-2">
-                            <select class="hidden p-3 bg-transparent rounded-full md:block md:p-4" name="domain" id="domain">
-                                <option value="article">Article</option>
-                                <option value="product">Product</option>
+                            <select class="hidden p-3 w-48 text-center px-4 bg-transparent rounded-full md:block md:p-4" name="domain" id="domain">
+                                <option  value="article">Article</option>
+                                <option class="text-center" value="product">Product</option>
                                 <option class="text-center" value="both">Both</option>
                             </select>
                             <input placeholder="Your favorite food" class="w-full p-4 rounded-full" type="text">
