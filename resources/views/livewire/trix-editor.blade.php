@@ -1,10 +1,56 @@
-<div>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.css" />
-    <form method="post" action={{ url('store') }}>
+<div class="container mx-auto ">
+    @push('styles')
+        @trixassets
+    @endpush
+    <form method="post" action="{{ route('posts.store') }}">
+        @foreach ($errors->all() as $error)
+            <p class="alert alert-danger">{{ $error }}</p>
+        @endforeach
+
         @csrf
-        <input id="x" type="hidden" name="content" value="<h1>This is content</h1>" />
-        <trix-editor input="x" class="trix-content"></trix-editor>
-        <input type="submit" name="submit" value="Submit" />
+        {{-- <select name="Category"> --}}
+        <div class="mb-5 w-fit">
+            <label
+                for="name"
+                class="mb-3 block text-base font-medium text-[#07074D]"
+            >
+                Title
+            </label>
+            <input
+                type="text"
+                name="name"
+                id="name"
+                placeholder="Full Name"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-amber-400 focus:shadow-md"
+            />
+        </div>
+        <div class="mb-5 w-fit">
+            <label
+                for="subject"
+                class="mb-3 block text-base font-medium text-[#07074D]"
+            >
+                Category
+            </label>
+            <input
+                type="text"
+                name="subject"
+                id="subject"
+                placeholder="Enter your subject"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-amber-400 focus:shadow-md"
+            />
+        </div>
+        <div class="w-full mb-5">
+            <input id="x" type="hidden" name="content" value="<h1>This is content</h1>" />
+            <label for="message" class="mb-3 block text-base font-medium text-[#07074D]">Body</label>
+            <trix-editor input="x" class="trix-content w-full resize-none rounded-md border py-3 px-6
+            border-[#e0e0e0] bg-white text-base font-medium text-[#6B7280] outline-none focus:shadow-md
+            focus:border-amber-400 " rows="4" name="message" id="message"></trix-editor>
+        </div>
+         <div class="">
+            <button type="submit" name="submit" value="Submit" class="px-8 py-3 text-base font-semibold text-white bg-yellow-400 rounded-md outline-none hover:shadow-form hover:bg-amber-400">
+              Submit
+            </button>
+        </div>
     </form>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.1/trix.min.js"></script>
     <script>

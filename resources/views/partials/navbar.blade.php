@@ -28,6 +28,21 @@
             </div>
             <!-- Settings Dropdown -->
             <div class="hidden gap-5 sm:flex sm:items-center sm:ml-6">
+                <div class="container flex justify-center lg:justify-end">
+                    <div class="pr-3">
+                        <form action="">
+                            <div class="relative inline-flex items-center transition-all duration-500 hover:pl-2 group">
+                                <input type="text" placeholder="search..." name="search" class="inline-block overflow-hidden transition-all duration-500 bg-transparent border-0 rounded group-hover:border-2 w-80 whitespace-nowrap group-hover:max-w-screen-2xl group-hover:bg-white group-focus:max-w-screen-2xl max-w-0 scale-80 group-hover:scale-100 group-hover:px-2 group-focus:px-2">
+                                <button class="absolute right-0 rotate-45 bottom-3 group"><svg class="w-6 h-6" fill="none"
+                                        stroke="#777" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                                        <path class="stroke-sky-600 hover:stroke-black" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"></path>
+                                    </svg>
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
                 @auth
                     @if(Route::is('posts.list') )
                         <div class="flex items-center h-16">
