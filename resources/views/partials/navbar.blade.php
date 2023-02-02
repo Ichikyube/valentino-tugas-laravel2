@@ -1,4 +1,4 @@
-<nav x-data="{ open: false }" class="w-full relative z-10 bg-yellow-300 shadow border-b border-gray-100">
+<nav x-data="{ open: false }" class="relative z-10 w-full bg-yellow-300 border-b border-gray-100 shadow">
     <!-- Primary Navigation Menu -->
     <div class="px-4 mx-auto max-w-7xl sm:px-6 lg:px-8">
         <div class="flex justify-between h-16">
@@ -10,8 +10,8 @@
                 </div>
             </div>
             <div
-            class="flex-wrap items-center justify-evenly hidden w-full p-6 space-y-6 bg-white lg:flex rounded-xl md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
-                <ul class="space-y-6 text-sm gap-8 font-medium tracking-wide md:flex md:space-y-0">
+            class="flex-wrap items-center hidden w-full p-6 space-y-6 bg-white justify-evenly lg:flex rounded-xl md:space-y-0 md:p-0 md:flex-nowrap md:bg-transparent lg:w-7/12">
+                <ul class="gap-8 space-y-6 text-sm font-medium tracking-wide md:flex md:space-y-0">
                     <li>
                         <a href="{{ route('posts.list') }}" class="block transition md:px-4 hover:text-yellow-700">
                             <span>Village's recipes</span>
@@ -27,11 +27,11 @@
                 </ul>
             </div>
             <!-- Settings Dropdown -->
-            <div class="hidden sm:flex sm:items-center gap-5 sm:ml-6">
+            <div class="hidden gap-5 sm:flex sm:items-center sm:ml-6">
                 @auth
                     @if(Route::is('posts.list') )
                         <div class="flex items-center h-16">
-                            <a href="{{ route('posts.create') }}" class="flex items-center mx-2 justify-center  text-gray-100 transition duration-150 rounded">
+                            <a href="{{ route('posts.create') }}" class="flex items-center justify-center mx-2 text-gray-100 transition duration-150 rounded">
                                 <svg class="w-6 h-6 hover:fill-orange-600" fill="currentColor" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm1-11a1 1 0 10-2 0v2H7a1 1 0 100 2h2v2a1 1 0 102 0v-2h2a1 1 0 100-2h-2V7z" clip-rule="evenodd"></path></svg>
                             </a>
                         </div>
@@ -82,8 +82,8 @@
                             @if (Route::has('auth.login'))
                             <div class="space-x-4">
                                 @auth
-                                    <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                                        {{ __('Dashboard') }}
+                                    <x-nav-link :href="route('auth.dashboard')" :active="request()->routeIs('auth.dashboard')">
+                                        {{ __('dashboard') }}
                                     </x-nav-link>
                                     <form id="logout-form" action="{{ route('auth.logout') }}" method="POST">
                                         @csrf
@@ -138,8 +138,8 @@
     <!-- Responsive Navigation Menu -->
     <div :class="{'block': open, 'hidden': ! open}" class="hidden sm:hidden">
         <div class="pt-2 pb-3 space-y-1">
-            <x-responsive-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')">
-                {{ __('Dashboard') }}
+            <x-responsive-nav-link :href="route('auth.dashboard')" :active="request()->routeIs('auth.dashboard')">
+                {{ __('dashboard') }}
             </x-responsive-nav-link>
         </div>
 

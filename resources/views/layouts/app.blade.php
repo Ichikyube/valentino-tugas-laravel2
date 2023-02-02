@@ -2,8 +2,10 @@
 
 @section('body')
     @yield('trigger')
-    @yield('content')
-
+    @yield('sidebar')
+    @isset($header)
+        {{ $header }}
+    @endisset
     @isset($slot)
         {{ $slot }}
     @endisset

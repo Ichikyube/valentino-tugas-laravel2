@@ -21,12 +21,13 @@ Route::name('auth.')->group(function(){
     Route::get('/login',[AuthController::class, 'login'])->name('login');
     Route::get('/register',[AuthController::class, 'register'])->name('register');
     Route::post('/login',[AuthController::class, 'login'])->name('userLogin');
+    Route::get('/dashboard', [AuthController::class, 'dash'])->middleware('withAuth', 'auth')->name('dashboard');
     Route::post('/register',[AuthController::class, 'register'])->name('storeUser');
-    Route::post('/logout',[AuthController::class, 'logout'])->middleware('auth')->name('logout');
+    Route::post('/logout',[AuthController::class, 'logout'])->middleware('withAuth', 'auth')->name('logout');
 });
-Route::get('/dashboard', [AuthController::class, 'dash'])->middleware('auth')->name('dashboard');
 
-//Route::get('/dashboard', [PostsController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+
+//Route::get('/dashboard', [PostsController::class, 'index'])->middleware(['withAuth', 'verified'])->name('auth.dashboard');
 
 Route::prefix("brands")
     ->name("products.")

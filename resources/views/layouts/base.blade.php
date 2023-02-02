@@ -25,7 +25,7 @@
 
     <body class="antialiased font-redHatMono bg-yellow-50">
         @include('partials.navbar')
-        <div class="container mx-auto h-full">
+        <div class="container h-full mx-auto">
                 @yield('body')
         </div>
         @stack('scripts')

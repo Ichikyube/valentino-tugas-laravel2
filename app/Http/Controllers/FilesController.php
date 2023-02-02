@@ -37,7 +37,7 @@ class FilesController extends Controller
     }
 
     public function storeImage(Request $request){
-        $data= new Postimage();
+        $data= new File();
 
         if($request->file('image')){
             $file= $request->file('image');
@@ -49,7 +49,7 @@ class FilesController extends Controller
         return redirect()->route('images.view');
     }
 
-    public function show($name)
+    public function show(Request $request,$name)
     {
         $extension = File::extension($name);
         $path = public_path('storage/' . $name);
@@ -60,10 +60,9 @@ class FilesController extends Controller
         $response->header("Content-Type", $type);
         return $response;
 
-        $file = Input::file('Picture');
+        $file = $request->file('Picture');
         $imageName = $file->getClientOriginalName();
-
-        $imgUpload = Image::make($file)->save(public_path('img/' . $imageName));
+        $imgUpload = File::make($file)->save(public_path('img/' . $imageName));
     }
 
     public function update(Request $request, $name)
